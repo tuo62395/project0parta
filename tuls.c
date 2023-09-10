@@ -30,11 +30,12 @@ int printAll(char directory[]){
         strcpy(dirAddition, nameList[i]->d_name);
         strcat(dirAddition, "/");
         strcat(newDirectory, dirAddition);
-        printf("\nnew directory is: %s\n", newDirectory);
+        //printf("\nnew directory is: %s\n", newDirectory);
         
         stat(newDirectory, &buffer);
         if (S_ISDIR(buffer.st_mode) != 0){ //not zero if it's a directory
             puts("this is a directory");
+            printAll(newDirectory);
         }
         
 
